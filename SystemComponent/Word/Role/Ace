@@ -1,0 +1,551 @@
+package SystemComponent.Word.Role
+{
+   import SystemComponent.SystemGameRole;
+   import SystemComponent.SystemLoading;
+   import SystemComponent.Word.RoleMathType;
+   import SystemEye.ComponentResourcesManage;
+   import SystemEye.SystemLoadType;
+   import eye.Math.FrameMath;
+   import flash.ui.Keyboard;
+   
+   public class Ace
+   {
+      
+      public static var $ob:Object = new Object();
+       
+      
+      public function Ace()
+      {
+         super();
+      }
+      
+      public static function init() : void
+      {
+         $ob["上旋腿"] = {
+            "cd":7,
+            "w":50,
+            "s":"W",
+            "key":Keyboard.J,
+            "g":"炎旋腿"
+         };
+         $ob["火焰瞬移"] = {
+            "cd":12,
+            "w":1000,
+            "s":"S",
+            "key":Keyboard.L,
+            "g":"火焰瞬移"
+         };
+         $ob["地崩"] = {
+            "cd":12,
+            "w":150,
+            "s":"S",
+            "key":Keyboard.U,
+            "g":"崩炎"
+         };
+         $ob["炎舞"] = {
+            "cd":12,
+            "w":80,
+            "s":"W",
+            "key":Keyboard.U,
+            "g":"破空炎舞"
+         };
+         $ob["原子"] = {
+            "cd":6,
+            "w":100,
+            "s":"S",
+            "key":Keyboard.I,
+            "g":"萤火.火达摩"
+         };
+         $ob["瞬炎"] = {
+            "cd":24,
+            "mp":200,
+            "w":250,
+            "s":"AA",
+            "key":Keyboard.O,
+            "g":"炎上纲"
+         };
+         $ob["爆发"] = {
+            "cd":30,
+            "mp":200,
+            "w":200,
+            "s":"W",
+            "key":Keyboard.O,
+            "g":"炎戒.火柱"
+         };
+         $ob["瞬步"] = {
+            "cd":0,
+            "w":1000,
+            "s":"",
+            "key":Keyboard.L
+         };
+         $ob["火拳"] = {
+            "cd":10,
+            "w":300,
+            "s":"",
+            "key":Keyboard.U,
+            "g":"火拳"
+         };
+         $ob["手枪"] = {
+            "cd":6,
+            "w":300,
+            "s":"",
+            "key":Keyboard.I,
+            "g":"火枪"
+         };
+         $ob["炎帝"] = {
+            "cd":40,
+            "mp":400,
+            "w":500,
+            "s":"",
+            "key":Keyboard.O,
+            "g":"大炎戒.炎帝"
+         };
+         $ob["火枪"] = {
+            "cd":3,
+            "k":true,
+            "w":200,
+            "s":"S",
+            "key":Keyboard.U,
+            "g":"神火·不知火"
+         };
+         $ob["落炎"] = {
+            "cd":5,
+            "k":true,
+            "w":50,
+            "h":1000,
+            "s":"",
+            "key":Keyboard.U,
+            "g":"落炎"
+         };
+         $ob["空中攻击"] = {
+            "cd":0,
+            "k":true,
+            "w":50,
+            "s":"",
+            "key":Keyboard.J
+         };
+         $ob["普通攻击"] = {
+            "cd":0,
+            "w":50,
+            "s":"",
+            "key":Keyboard.J
+         };
+      }
+      
+      public static function loadData() : void
+      {
+         SystemLoading.addTask("File/indexFile/img/role/ace.png","photo","Ace");
+         SystemLoading.addTask("File/indexFile/img/role/ace.xml","text","Ace");
+         SystemLoading.addTask("File/indexFile/img/skill/YanDi.png","photo","YanDi");
+         SystemLoading.addTask("File/indexFile/img/skill/YanDi.xml","text","YanDi");
+         SystemLoadType.loadRoleSkillData("AS/Q");
+         SystemLoadType.loadRoleSkillData("AS/X");
+         SystemLoadType.loadRoleSkillData("AS/B");
+         SystemLoadType.loadRoleSkillData("AS/D");
+         SystemLoadType.loadRoleSkillData("AS/Boom");
+         SystemLoadType.loadRoleSkillData("AS/W");
+         SystemLoadType.loadRoleSkillData("AS/Y");
+         SystemLoadType.loadRoleSkillData("AS/Z");
+         SystemLoadType.loadRoleSkillData("AS/H");
+         SystemLoadType.loadRoleSkillData("AS/S");
+         SystemLoadType.loadRoleSkillData("AS/huo");
+         SystemLoadType.loadRoleSkillData("AS/HQ");
+         SystemLoadType.loadHredSkillData("ace1");
+         SystemLoading.addTask("File/indexFile/sound/role/ace/1.mp3","sound","ace_1");
+         SystemLoading.addTask("File/indexFile/sound/role/ace/2.mp3","sound","ace_2");
+         SystemLoading.addTask("File/indexFile/sound/role/ace/3.mp3","sound","ace_3");
+         SystemLoading.addTask("File/indexFile/sound/role/ace/5.mp3","sound","ace_5");
+         SystemLoading.addTask("File/indexFile/sound/role/ace/7.mp3","sound","ace_7");
+         SystemLoading.addTask("File/indexFile/sound/role/ace/I.mp3","sound","ace_I");
+         SystemLoading.addTask("File/indexFile/sound/role/ace/I2.mp3","sound","ace_I2");
+         SystemLoading.addTask("File/indexFile/sound/role/ace/O.mp3","sound","ace_O");
+         SystemLoading.addTask("File/indexFile/sound/role/ace/SOorKSJ.mp3","sound","ace_SOorKSJ");
+         SystemLoading.addTask("File/indexFile/sound/role/ace/U.mp3","sound","ace_U");
+         SystemLoading.addTask("File/indexFile/sound/role/ace/WI1.mp3","sound","ace_WI1");
+         SystemLoading.addTask("File/indexFile/sound/role/ace/WO.mp3","sound","ace_WO");
+         SystemLoading.addTask("File/indexFile/sound/role/ace/WO2.mp3","sound","ace_WO2");
+      }
+      
+      public static function getKeyString(role:SystemGameRole, k:int = 0) : String
+      {
+         var $key:String = role.$keyString.substring(role.$keyString.length - 2,role.$keyString.length);
+         for(var i:int = 0; i <= 1; $key = $key.charAt(1),i++)
+         {
+            switch(k)
+            {
+               case Keyboard.J:
+                  switch($key)
+                  {
+                     case "W":
+                        return "上旋腿";
+                     default:
+                        continue;
+                  }
+                  break;
+               case Keyboard.K:
+                  return "none";
+               case Keyboard.L:
+                  switch($key)
+                  {
+                     case "S":
+                        return "火焰瞬移";
+                     default:
+                        continue;
+                  }
+                  break;
+               case Keyboard.U:
+                  switch($key)
+                  {
+                     case "S":
+                        return "地崩";
+                     case "W":
+                        return "炎舞";
+                     default:
+                        continue;
+                  }
+                  break;
+               case Keyboard.I:
+                  switch($key)
+                  {
+                     case "S":
+                        return "原子";
+                     default:
+                        continue;
+                  }
+                  break;
+               case Keyboard.O:
+                  switch($key)
+                  {
+                     case "AA":
+                     case "DD":
+                        return "瞬炎";
+                     case "W":
+                        return "爆发";
+                     default:
+                        continue;
+                  }
+                  break;
+               case Keyboard.P:
+                  continue;
+               default:
+                  continue;
+            }
+         }
+         switch(k)
+         {
+            case Keyboard.J:
+               return "普通攻击";
+            case Keyboard.K:
+               return "none";
+            case Keyboard.L:
+               return "瞬步";
+            case Keyboard.U:
+               return "火拳";
+            case Keyboard.I:
+               return "手枪";
+            case Keyboard.O:
+               return "炎帝";
+            case Keyboard.P:
+         }
+         return "none";
+      }
+      
+      public static function getKeyJumpString(role:SystemGameRole, k:int = 0) : String
+      {
+         var $key:String = role.$keyString.substring(role.$keyString.length - 2,role.$keyString.length);
+         for(var i:int = 0; i <= 1; $key = $key.charAt(1),i++)
+         {
+            switch(k)
+            {
+               case Keyboard.U:
+                  switch($key)
+                  {
+                     case "S":
+                        return "火枪";
+                     default:
+                        continue;
+                  }
+                  break;
+            }
+         }
+         switch(k)
+         {
+            case Keyboard.J:
+               return "空中攻击";
+            case Keyboard.U:
+               return "落炎";
+            default:
+               return "none";
+         }
+      }
+      
+      public static function Hurt(role:SystemGameRole) : int
+      {
+         switch(role.$frameString)
+         {
+            case "死氣亂擊":
+               return 10;
+            default:
+               return 20;
+         }
+      }
+      
+      public static function getSkillBuff(role:SystemGameRole) : void
+      {
+         if(!role.$jumpBoolean)
+         {
+            role.$y += role.Speed;
+         }
+         switch(role.$frameString)
+         {
+            case "火拳":
+               if(role.$frameInt == 3 && role.$skillFrameInt !== role.$frameInt)
+               {
+                  ComponentResourcesManage.$Ob["SystemWord"].askElements("skill",{
+                     "ka":[3,10],
+                     "name":"AS/HQ",
+                     "type":"SkillAce",
+                     "fuck":6,
+                     "time":0,
+                     "role":role,
+                     "x":role.$bit.x,
+                     "y":role.$bit.y,
+                     "scaleX":role.$scaleX * 1
+                  });
+               }
+               break;
+            case "瞬炎":
+               role.$x += role.$scaleX * FrameMath.mathFrameToX(role.$frameInt,3,5,role.Speed * 8);
+               if(role.$frameInt == 5 && role.$skillFrameInt !== role.$frameInt)
+               {
+                  ComponentResourcesManage.$Ob["SystemWord"].askElements("skill",{
+                     "ka":[5,10],
+                     "name":"AS/S",
+                     "type":"SkillAce",
+                     "fuck":3,
+                     "time":0,
+                     "role":role,
+                     "x":role.$bit.x + 60 * role.$scaleX,
+                     "y":role.$bit.y,
+                     "scaleX":role.$scaleX * 1
+                  });
+               }
+               break;
+            case "火枪":
+               if(role.$frameInt == 5 && role.$skillFrameInt !== role.$frameInt)
+               {
+                  ComponentResourcesManage.$Ob["SystemWord"].askElements("skill",{
+                     "troops":role.$troops,
+                     "hp":1,
+                     "gox":13,
+                     "goy":10,
+                     "name":"AS/H",
+                     "type":"SkillAce",
+                     "fuck":6,
+                     "time":0,
+                     "role":role,
+                     "x":role.$bit.x,
+                     "y":role.$bit.y,
+                     "scaleX":role.$scaleX * 1
+                  });
+               }
+               break;
+            case "原子":
+               if((role.$frameInt == 2 || role.$frameInt == 4 || role.$frameInt == 6 || role.$frameInt == 8) && role.$skillFrameInt !== role.$frameInt)
+               {
+                  ComponentResourcesManage.$Ob["SystemWord"].askElements("skill",{
+                     "troops":role.$troops,
+                     "hp":1,
+                     "gox":Math.random() * 10,
+                     "goy":Math.random() * 10 - 5,
+                     "name":"AS/Z",
+                     "type":"SkillAce",
+                     "fuck":12,
+                     "time":0,
+                     "role":role,
+                     "x":role.$bit.x + 80 * role.$scaleX,
+                     "y":role.$bit.y,
+                     "scaleX":role.$scaleX * 1
+                  });
+               }
+               break;
+            case "落炎":
+               role.$y += FrameMath.mathFrameToX(role.$frameInt,2,4,15);
+               if(role.$jumpBoolean && role.$frameInt == 4)
+               {
+                  role.to(2);
+               }
+               else if(!role.$jumpBoolean && role.$frameInt < 5)
+               {
+                  ComponentResourcesManage.$word.$map.setZhen = 1;
+                  role.to(5);
+               }
+               if(role.$frameInt == 5 && role.$skillFrameInt !== role.$frameInt)
+               {
+                  ComponentResourcesManage.$Ob["SystemWord"].askElements("skill",{
+                     "ka":[1,10],
+                     "name":"AS/Y",
+                     "type":"SkillAce",
+                     "fuck":99,
+                     "time":0,
+                     "role":role,
+                     "x":role.$bit.x,
+                     "y":role.$bit.y,
+                     "scaleX":role.$scaleX * 1
+                  });
+               }
+               break;
+            case "炎舞":
+               role.$x += role.$scaleX * FrameMath.mathFrameToX(role.$frameInt,3,6,2);
+               role.$y += FrameMath.mathFrameToX(role.$frameInt,3,6,-10);
+               if(role.$frameInt == 3 && role.$skillFrameInt !== role.$frameInt)
+               {
+                  role.stoic = 0.1;
+                  ComponentResourcesManage.$Ob["SystemWord"].askElements("skill",{
+                     "ka":[2,10],
+                     "name":"AS/W",
+                     "type":"SkillAce",
+                     "fuck":6,
+                     "time":0,
+                     "role":role,
+                     "x":role.$bit.x,
+                     "y":role.$bit.y,
+                     "scaleX":role.$scaleX * 1
+                  });
+               }
+               break;
+            case "爆发":
+               if(role.$frameInt == 8 && role.$skillFrameInt !== role.$frameInt)
+               {
+                  ComponentResourcesManage.$word.$map.setZhen = 1;
+                  role.stoic = 0.5;
+                  ComponentResourcesManage.$Ob["SystemWord"].askElements("skill",{
+                     "ka":[3,10],
+                     "name":"AS/Boom",
+                     "type":"SkillAce",
+                     "fuck":3,
+                     "time":0,
+                     "role":role,
+                     "x":role.$bit.x,
+                     "y":role.$bit.y,
+                     "scaleX":role.$scaleX * 1
+                  });
+               }
+               break;
+            case "手枪":
+               if((role.$frameInt == 4 || role.$frameInt == 8) && role.$skillFrameInt !== role.$frameInt)
+               {
+                  ComponentResourcesManage.$Ob["SystemWord"].askElements("skill",{
+                     "troops":role.$troops,
+                     "hp":1,
+                     "gox":15,
+                     "name":"AS/D",
+                     "type":"SkillAce",
+                     "fuck":99,
+                     "time":0,
+                     "role":role,
+                     "x":role.$bit.x + 40 * role.$scaleX,
+                     "y":role.$bit.y,
+                     "scaleX":role.$scaleX * 1
+                  });
+               }
+               break;
+            case "地崩":
+               if(role.$frameInt == 6 && role.$skillFrameInt !== role.$frameInt)
+               {
+                  ComponentResourcesManage.$word.$map.setZhen = 1;
+                  role.stoic = 0.2;
+                  ComponentResourcesManage.$Ob["SystemWord"].askElements("skill",{
+                     "ka":[1,10],
+                     "name":"AS/B",
+                     "type":"SkillAce",
+                     "fuck":99,
+                     "time":0,
+                     "role":role,
+                     "x":role.$bit.x + 40 * role.$scaleX,
+                     "y":role.$bit.y,
+                     "scaleX":role.$scaleX * 1
+                  });
+               }
+               break;
+            case "上旋腿":
+               role.$x += role.$scaleX * FrameMath.mathFrameToX(role.$frameInt,3,6,2);
+               role.$y += FrameMath.mathFrameToX(role.$frameInt,3,6,-8);
+               if(role.$frameInt == 3 && role.$skillFrameInt !== role.$frameInt)
+               {
+                  role.stoic = 0.1;
+                  ComponentResourcesManage.$Ob["SystemWord"].askElements("skill",{
+                     "ka":[1,10],
+                     "name":"AS/X",
+                     "type":"SkillAce",
+                     "fuck":99,
+                     "time":0,
+                     "role":role,
+                     "x":role.$bit.x,
+                     "y":role.$bit.y,
+                     "scaleX":role.$scaleX * 1
+                  });
+               }
+               break;
+            case "火焰瞬移":
+               role.$god = 5;
+               role.$x += role.$scaleX * FrameMath.mathFrameToX(role.$frameInt,3,5,role.Speed * 8);
+               RoleMathType.alphaFrame(role);
+               break;
+            case "瞬步":
+               role.$x += role.$scaleX * FrameMath.mathFrameToX(role.$frameInt,0,6,role.Speed * 4);
+               RoleMathType.alphaFrame(role);
+               break;
+            case "普通攻击":
+               role.$x += role.$scaleX * FrameMath.mathFrameToX(role.$frameInt,2,4,2);
+               role.$x += role.$scaleX * FrameMath.mathFrameToX(role.$frameInt,8,11,3);
+               role.$x += role.$scaleX * FrameMath.mathFrameToX(role.$frameInt,13,15,2);
+               role.$x += role.$scaleX * FrameMath.mathFrameToX(role.$frameInt,19,21,4);
+               break;
+            case "炎帝":
+               RoleMathType.setPhoto(role,"HREDace1");
+               role.stoic = 0.1;
+               ComponentResourcesManage.$word.$map.$scale = 1;
+               if(role.$frameInt == 10 && role.$skillFrameInt !== role.$frameInt)
+               {
+                  ComponentResourcesManage.$Ob["SystemWord"].askElements("skill",{
+                     "name":"YanDi",
+                     "type":"SkillAce",
+                     "target":true,
+                     "fuck":3,
+                     "time":120,
+                     "role":role,
+                     "x":role.$bit.x,
+                     "y":role.$bit.y - 70,
+                     "scaleX":role.$scaleX * 2
+                  });
+                  ComponentResourcesManage.$Ob["SystemWord"].askElements("skill",{
+                     "down":true,
+                     "name":"AS/Q",
+                     "type":"SkillAce",
+                     "fuck":0,
+                     "time":20,
+                     "role":role,
+                     "x":role.$bit.x,
+                     "y":role.$bit.y,
+                     "scaleX":role.$scaleX * 1
+                  });
+               }
+               if(role.$frameInt == 24 && role.$skillFrameInt !== role.$frameInt)
+               {
+                  ComponentResourcesManage.$Ob["SystemWord"].$elementsOb["Skill" + role.name + "YanDi"].$gox = 3;
+                  ComponentResourcesManage.$Ob["SystemWord"].$elementsOb["Skill" + role.name + "YanDi"].$goy = 4;
+               }
+         }
+         role.$skillFrameInt = role.$frameInt;
+      }
+      
+      public static function getFightBuff(role:SystemGameRole, di:SystemGameRole) : void
+      {
+         switch(role.$frameString)
+         {
+            case "查克拉˙伸手擊":
+         }
+      }
+   }
+}
